@@ -6,12 +6,8 @@ export async function loader({ params }) {
 }
 
 export async function action({ request, params }) {
-  console.log("EDIT ACTION");
-  console.log({ request, params });
   const formData = await request.formData();
-  console.log({ formData });
   const updates = Object.fromEntries(formData);
-  console.log({ updates });
   await updateContact(params.contactId, updates);
   return redirect(`/contacts/${params.contactId}`);
 }
